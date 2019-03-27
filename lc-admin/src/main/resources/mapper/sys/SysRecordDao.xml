@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="lc.platform.admin.modules.sys.dao.SysRecordDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="lc.platform.admin.modules.sys.entity.SysRecordEntity" id="sysRecordMap">
+        <result property="id" column="id"/>
+        <result property="userName" column="user_name"/>
+        <result property="recordTime" column="record_time"/>
+        <result property="reason" column="reason"/>
+        <result property="phone" column="phone"/>
+        <result property="roomCode" column="room_code"/>
+        <result property="teachePone" column="teache_pone"/>
+        <result property="recordName" column="record_name"/>
+        <result property="createTime" column="create_time"/>
+    </resultMap>
+
+
+</mapper>
