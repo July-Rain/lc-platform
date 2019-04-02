@@ -1,6 +1,7 @@
 package lc.platform.admin.modules.sys.controller;
 
 import java.util.Arrays;
+import java.util.Date;
 import java.util.Map;
 
 import com.baomidou.mybatisplus.toolkit.IdWorker;
@@ -63,6 +64,7 @@ public class SysRecordController extends AbstractController{
 
         //you should set the SysRecordEntity's 'id' value
         sysRecord.setId(IdWorker.getIdStr());
+        sysRecord.setCreateTime(new Date());
 		sysRecordService.insert(sysRecord);
 
         return Result.ok();

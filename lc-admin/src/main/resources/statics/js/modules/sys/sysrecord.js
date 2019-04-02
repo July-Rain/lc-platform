@@ -3,7 +3,7 @@ $(function () {
         url: baseURL + 'sys/sysrecord/list',
         datatype: "json",
         colModel: [			
-			{ label: 'id', name: 'id', index: 'id', width: 50, key: true },
+			{ label: 'id', name: 'id', index: 'id', width: 50, key: true,hidden:true },
 			{ label: '人名', name: 'userName', index: 'user_name', width: 80 }, 			
 			{ label: '晚归时间', name: 'recordTime', index: 'record_time', width: 80 }, 			
 			{ label: '晚归原因', name: 'reason', index: 'reason', width: 80 }, 			
@@ -45,7 +45,11 @@ var vm = new Vue({
 	data:{
 		showList: true,
 		title: null,
-		sysRecord: {}
+		sysRecord: {},
+        q:{
+            userName: "",
+			roomCode:""
+        },
 	},
 	methods: {
 		query: function () {
@@ -116,7 +120,8 @@ var vm = new Vue({
 		reload: function (event) {
 			vm.showList = true;
 			var page = $("#jqGrid").jqGrid('getGridParam','page');
-			$("#jqGrid").jqGrid('setGridParam',{ 
+			$("#jqGrid").jqGrid('setGridParam',{
+                postData:{'userName': vm.q.userName,'roomCode': vm.q.roomCode},
                 page:page
             }).trigger("reloadGrid");
 		}
