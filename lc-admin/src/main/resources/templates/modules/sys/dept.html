@@ -32,25 +32,25 @@
 		<div class="panel-heading">{{title}}</div>
 		<form class="form-horizontal">
 			<div class="form-group">
-				<div class="col-sm-2 control-label">部门名称</div>
+				<div class="col-sm-2 control-label">宿舍名称</div>
 				<div class="col-sm-10">
 					<input type="text" class="form-control" v-model="dept.name" placeholder="部门名称"/>
 				</div>
 			</div>
 			<div class="form-group">
-				<div class="col-sm-2 control-label">部门简称</div>
+				<div class="col-sm-2 control-label">宿舍简称</div>
 				<div class="col-sm-10">
 					<input type="text" class="form-control" v-model="dept.abbName" placeholder="部门简称"/>
 				</div>
 			</div>
 			<div class="form-group">
-				<div class="col-sm-2 control-label">上级部门</div>
+				<div class="col-sm-2 control-label">所属楼栋</div>
 				<div class="col-sm-10">
 					<input type="text" class="form-control" style="cursor:pointer;" v-model="dept.parentName" @click="deptTree" readonly="readonly" placeholder="一级部门"/>
 				</div>
 			</div>
 			<div class="form-group">
-				<div class="col-sm-2 control-label">是否虚拟</div>
+				<div class="col-sm-2 control-label">是否最上级</div>
 				<label class="radio-inline">
 					<input type="radio" name="virtualFlag" value="0" @change="displayDeptCode(this)" v-model="dept.virtualFlag"/> 否
 				</label>
@@ -59,7 +59,7 @@
 				</label>
 			</div>
 			<div class="form-group" v-show="showDeptCode">
-				<div class="col-sm-2 control-label">部门编码</div>
+				<div class="col-sm-2 control-label">宿舍号</div>
 				<div class="col-sm-10">
 					<input type="text"  class="form-control" style="cursor:pointer;" v-model="dept.deptCode" placeholder="部门编码"/>
 				</div>

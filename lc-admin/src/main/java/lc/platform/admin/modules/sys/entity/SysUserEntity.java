@@ -135,7 +135,6 @@ public class SysUserEntity implements Serializable {
     /**
      * 部门ID
      */
-    @NotNull(message = "部门不能为空", groups = {AddGroup.class, UpdateGroup.class})
     private Long deptId;
 
     /**

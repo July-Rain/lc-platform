@@ -129,7 +129,7 @@ var vm = new Vue({
             vm.getDept();
 		},
 		saveOrUpdate: function (event) {
-			var url = vm.sysStudent.stuId == null ? "sys/sysstudent/save" : "sys/sysstudent/update";
+			var url = vm.sysStudent.stuId? "sys/sysstudent/update":"sys/sysstudent/save";
 			$.ajax({
 				type: "POST",
 			    url: baseURL + url,
