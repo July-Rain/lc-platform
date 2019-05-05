@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50544
 File Encoding         : 65001
 
-Date: 2019-03-23 17:02:30
+Date: 2019-04-10 15:19:13
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -3594,7 +3594,7 @@ CREATE TABLE `sys_config` (
   `remark` longtext COMMENT '备注',
   PRIMARY KEY (`id`),
   UNIQUE KEY `key` (`key`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=996615629328961539 DEFAULT CHARSET=utf8 COMMENT='系统配置信息表';
+) ENGINE=InnoDB AUTO_INCREMENT=993030513423851524 DEFAULT CHARSET=utf8 COMMENT='系统配置信息表';
 
 -- ----------------------------
 -- Records of sys_config
@@ -3625,11 +3625,13 @@ CREATE TABLE `sys_dict` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `type` (`type`,`code`) USING BTREE,
   KEY `idx_parent_type_code` (`parent_type_code`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=1081820836691427330 DEFAULT CHARSET=utf8 COMMENT='数据字典表';
+) ENGINE=InnoDB AUTO_INCREMENT=1113690067373338626 DEFAULT CHARSET=utf8 COMMENT='数据字典表';
 
 -- ----------------------------
 -- Records of sys_dict
 -- ----------------------------
+INSERT INTO `sys_dict` VALUES ('1113689306107162625', '性别', 'sex', '0', '1', '男', '1', null, '0', '1', null, '1', null, '2019-04-04 14:26:14');
+INSERT INTO `sys_dict` VALUES ('1113690067373338625', '性别', 'sex', '0', '2', '女', '2', null, '0', '1', null, '1', null, '2019-04-04 14:29:20');
 
 -- ----------------------------
 -- Table structure for sys_log
@@ -3645,7 +3647,7 @@ CREATE TABLE `sys_log` (
   `ip` varchar(64) DEFAULT NULL COMMENT 'IP地址',
   `create_date` datetime DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1032075561694011394 DEFAULT CHARSET=utf8 COMMENT='系统日志';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='系统日志';
 
 -- ----------------------------
 -- Records of sys_log
@@ -3667,7 +3669,7 @@ CREATE TABLE `sys_menu` (
   `is_show` int(1) DEFAULT '1' COMMENT '是否显示 0不显示 1显示',
   PRIMARY KEY (`menu_id`),
   KEY `sys_menu_id` (`menu_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=8956425654564564675 DEFAULT CHARSET=utf8 COMMENT='菜单管理';
+) ENGINE=InnoDB AUTO_INCREMENT=1109358149043417090 DEFAULT CHARSET=utf8 COMMENT='菜单管理';
 
 -- ----------------------------
 -- Records of sys_menu
@@ -3679,7 +3681,7 @@ INSERT INTO `sys_menu` VALUES ('27', '1', '参数管理', 'modules/sys/config.ht
 INSERT INTO `sys_menu` VALUES ('29', '1', '系统日志', 'modules/sys/log.html', 'sys:log:list', '1', 'fa fa-file-text-o', '7', '1');
 INSERT INTO `sys_menu` VALUES ('31', '1109358149043417089', '宿舍管理', 'modules/sys/dept.html', null, '1', 'fa fa-key', '1', '1');
 INSERT INTO `sys_menu` VALUES ('973374820438306817', '0', '字典管理', null, null, '0', 'fa fa-bar-chart', '9', '1');
-INSERT INTO `sys_menu` VALUES ('976000486291472386', '973374820438306817', '字典管理', 'modules/dict.html/kinds/婚纱风格种类', null, '1', 'fa fa-server', '13', '1');
+INSERT INTO `sys_menu` VALUES ('976000486291472386', '973374820438306817', '字典管理', 'modules/sys/sysdict.html', null, '1', 'fa fa-server', '13', '1');
 INSERT INTO `sys_menu` VALUES ('1076809832672694274', '1076810075489341441', '晚归记录', 'modules/sys/sysrecord.html', null, '1', 'fa fa-pencil-square-o', '0', '1');
 INSERT INTO `sys_menu` VALUES ('1076810075489341441', '0', '晚归管理', null, null, '0', 'fa fa-hand-o-right', '0', '1');
 INSERT INTO `sys_menu` VALUES ('1078921994218033153', '0', '用户管理', null, null, '0', 'fa fa-user', '0', '1');
@@ -3692,7 +3694,7 @@ INSERT INTO `sys_menu` VALUES ('1109358149043417089', '0', '宿舍管理', null,
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_record`;
 CREATE TABLE `sys_record` (
-  `id` varchar(40) NOT NULL COMMENT '预约的记录的id',
+  `id` varchar(40) NOT NULL COMMENT '记录的id',
   `user_name` varchar(100) DEFAULT NULL COMMENT '人名',
   `record_time` datetime DEFAULT NULL COMMENT '晚归时间',
   `reason` varchar(100) DEFAULT NULL COMMENT '晚归原因',
@@ -3707,7 +3709,8 @@ CREATE TABLE `sys_record` (
 -- ----------------------------
 -- Records of sys_record
 -- ----------------------------
-INSERT INTO `sys_record` VALUES ('1109348994895278082', '吴梦雨', null, '123', '321', '321', '321', '312', '1970-01-01 00:00:00');
+INSERT INTO `sys_record` VALUES ('1113044488137969665', 'qw', '2019-04-02 19:44:16', '21', '21', '12', '12', '12', '2019-04-02 11:44:19');
+INSERT INTO `sys_record` VALUES ('1113044630274543618', '测试数据', '2019-04-25 00:00:00', '测试数据', '15200000000', '302', '测试', '管理', '2019-04-02 11:44:53');
 
 -- ----------------------------
 -- Table structure for sys_role
@@ -3720,7 +3723,7 @@ CREATE TABLE `sys_role` (
   `dept_id` bigint(40) DEFAULT NULL COMMENT '部门ID',
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`role_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1027754154782158850 DEFAULT CHARSET=utf8 COMMENT='角色';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='角色';
 
 -- ----------------------------
 -- Records of sys_role
@@ -3735,7 +3738,7 @@ CREATE TABLE `sys_role_dept` (
   `role_id` bigint(40) DEFAULT NULL COMMENT '角色ID',
   `dept_id` bigint(40) DEFAULT NULL COMMENT '部门ID',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1031505012093841410 DEFAULT CHARSET=utf8 COMMENT='角色与部门对应关系';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='角色与部门对应关系';
 
 -- ----------------------------
 -- Records of sys_role_dept
@@ -3750,7 +3753,7 @@ CREATE TABLE `sys_role_menu` (
   `role_id` bigint(40) DEFAULT NULL COMMENT '角色ID',
   `menu_id` bigint(40) DEFAULT NULL COMMENT '菜单ID',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1032075561559793785 DEFAULT CHARSET=utf8 COMMENT='角色与菜单对应关系';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='角色与菜单对应关系';
 
 -- ----------------------------
 -- Records of sys_role_menu
@@ -3761,16 +3764,16 @@ CREATE TABLE `sys_role_menu` (
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_room`;
 CREATE TABLE `sys_room` (
-  `dept_id` varchar(60) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `dept_code` varchar(60) DEFAULT NULL COMMENT '部门或地区编码 递归查找',
-  `parent_id` varchar(60) DEFAULT NULL COMMENT '上级部门ID，一级部门为0',
-  `name` varchar(50) DEFAULT NULL COMMENT '部门名称',
+  `dept_id` varchar(60) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '宿舍id',
+  `dept_code` varchar(60) DEFAULT NULL COMMENT '宿舍编码',
+  `parent_id` varchar(60) DEFAULT NULL COMMENT '上级宿舍',
+  `name` varchar(50) DEFAULT NULL COMMENT '宿舍名称',
   `order_num` int(11) DEFAULT NULL COMMENT '排序',
   `del_flag` tinyint(4) DEFAULT '0' COMMENT '是否删除  -1：已删除  0：正常',
-  `virtual_flag` int(1) DEFAULT '0' COMMENT '虚拟标识：存在一个虚拟的部门，用来查询所有下级部门中的数据；',
+  `virtual_flag` int(1) DEFAULT '0' COMMENT '虚拟标识',
   `abb_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '简称',
   `area_name` varchar(45) DEFAULT NULL,
-  `level` int(11) DEFAULT NULL,
+  `level` int(11) DEFAULT NULL COMMENT '楼层',
   PRIMARY KEY (`dept_id`),
   KEY `idx_parent_id` (`parent_id`) USING BTREE,
   KEY `idx_order_num` (`order_num`) USING BTREE,
@@ -3781,9 +3784,10 @@ CREATE TABLE `sys_room` (
 -- ----------------------------
 -- Records of sys_room
 -- ----------------------------
-INSERT INTO `sys_room` VALUES ('1078904943566946305', '123123', '988141569170239490', '工作室摄影部', '3', '0', '0', '摄影部', null, null);
-INSERT INTO `sys_room` VALUES ('988141569170239490', null, '0', 'XXX婚纱摄影工作室', '1', '0', '1', '工作室', null, '2');
-INSERT INTO `sys_room` VALUES ('988144781986131970', '320200', '988141569170239490', '工作室管理部', '1', '0', '0', '管理部', '无锡市', '3');
+INSERT INTO `sys_room` VALUES ('1078904943566946305', '123123', '988141569170239490', '学生宿舍-1-栋', '3', '0', '0', '1', null, null);
+INSERT INTO `sys_room` VALUES ('1113688922676473858', '101-2', '1078904943566946305', '1-栋-101-1', '0', '0', '0', '101', null, null);
+INSERT INTO `sys_room` VALUES ('988141569170239490', null, '0', 'XX学校', '1', '0', '1', '学校', null, '2');
+INSERT INTO `sys_room` VALUES ('988144781986131970', '320200', '988141569170239490', '学生宿舍-2-栋', '1', '0', '0', '2', '无锡市', '3');
 
 -- ----------------------------
 -- Table structure for sys_student
@@ -3801,15 +3805,14 @@ CREATE TABLE `sys_student` (
   `teacher_phone` varchar(100) DEFAULT NULL COMMENT '教师手机号',
   `stu_major` varchar(100) DEFAULT NULL COMMENT '专业',
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
-  PRIMARY KEY (`stu_id`),
-  UNIQUE KEY `username` (`stu_name`) USING BTREE,
-  UNIQUE KEY `card_id` (`stu_sex`) USING BTREE
+  PRIMARY KEY (`stu_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='系统用户';
 
 -- ----------------------------
 -- Records of sys_student
 -- ----------------------------
 INSERT INTO `sys_student` VALUES ('1109364272542691330', '测试', '123', '0', '123', '123123', '工作室摄影部', '123', '123', '123', '2019-03-23 08:00:28');
+INSERT INTO `sys_student` VALUES ('1113710741441671169', '测试', '20190404', '0', '15444445555', '101', '1-栋-101', '测试数据', '15845451241', '软件工程', '2019-04-04 07:51:47');
 
 -- ----------------------------
 -- Table structure for sys_user
@@ -3833,13 +3836,14 @@ CREATE TABLE `sys_user` (
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `username` (`username`) USING BTREE,
   UNIQUE KEY `card_id` (`card_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=1078919933074132995 DEFAULT CHARSET=utf8 COMMENT='系统用户';
+) ENGINE=InnoDB AUTO_INCREMENT=1113712196294754307 DEFAULT CHARSET=utf8 COMMENT='系统用户';
 
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
 INSERT INTO `sys_user` VALUES ('1', 'admin', '5f9c50b9d370e553b076ecf20870baab6dff1d061fb15868b62ca17f04b70a16', '123402004556', 'YzcmCZNvbXocrsz9dm8e', 'root@qq.com', '13912345678', '1', '1', '988144781986131970', '2018-02-24 11:11:11', '超级管理员', null, '1');
 INSERT INTO `sys_user` VALUES ('1078919933074132994', 'test', 'ba249d20c302baec2265d77204f37c289badb16759152e38eb0c1bb71118f0d5', '12345', 'pds919JwZ10xJvIce5oT', '1@123', null, '1', '1', '1078904943566946305', '2018-12-29 07:45:32', '测试用户', '摄影师', '0');
+INSERT INTO `sys_user` VALUES ('1113712196294754306', '5500', '8290ff5c3701f6a45b2ddb072265f9a1d5867428cb94e98940acf89a6b8ffc2f', '3568956499802521254', 'WezWVjbVDVXovLzdwOt9', '45784512@qq.com', '15878457877', '1', '1', null, '2019-04-04 07:57:34', '张三', '测试', '0');
 
 -- ----------------------------
 -- Table structure for sys_user_role
@@ -3850,7 +3854,7 @@ CREATE TABLE `sys_user_role` (
   `user_id` bigint(40) DEFAULT NULL COMMENT '用户ID',
   `role_id` bigint(40) DEFAULT NULL COMMENT '角色ID',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=997388956564221954 DEFAULT CHARSET=utf8 COMMENT='用户与角色对应关系';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户与角色对应关系';
 
 -- ----------------------------
 -- Records of sys_user_role

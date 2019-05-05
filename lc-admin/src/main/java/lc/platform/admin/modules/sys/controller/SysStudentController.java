@@ -1,8 +1,6 @@
 package lc.platform.admin.modules.sys.controller;
 
-import java.util.Arrays;
-import java.util.Date;
-import java.util.Map;
+import java.util.*;
 
 import com.baomidou.mybatisplus.toolkit.IdWorker;
 import lc.platform.admin.common.utils.PageUtils;
@@ -10,6 +8,7 @@ import lc.platform.admin.common.utils.Result;
 import lc.platform.admin.modules.sys.entity.SysStudentEntity;
 import lc.platform.admin.modules.sys.service.SysStudentService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.hibernate.validator.constraints.EAN;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -88,6 +87,25 @@ public class SysStudentController extends AbstractController{
     public Result delete(@RequestBody String[] stuIds){
 
 		sysStudentService.deleteBatchIds(Arrays.asList(stuIds));
+
+        return Result.ok();
+    }
+    /**
+     * 修改
+     */
+    @RequestMapping("/updateRoom")
+    public Result updateRoom(String stuIds,String roomCode,String roomName){
+
+        List<SysStudentEntity> stuList = new ArrayList<>();
+        String [] arr=stuIds.split(",");
+        for(String id:arr){
+            SysStudentEntity stu = new SysStudentEntity();
+            stu.setStuId(id);
+            stu.setStuRoomCode(roomCode);
+            stu.setStuRoomName(roomName);
+            stuList.add(stu);
+        }
+        sysStudentService.updateBatchById(stuList);
 
         return Result.ok();
     }
